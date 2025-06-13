@@ -1,6 +1,6 @@
 <?php
 
-class PostApiInscricoes
+class PostApiUsers
 {
     private string $baseUrl;
 
@@ -9,16 +9,15 @@ class PostApiInscricoes
         $this->baseUrl = 'http://localhost:3001';
     }
 
-    public function inscrever($nome, $cpf, $email, $telefone)
+    public function cadastrar($nome, $email, $senha)
     {
         $data = [
             'nome' => $nome,
-            'cpf' => $cpf,
             'email' => $email,
-            'telefone' => $telefone
+            'senha' => $senha
         ];
 
-        $url = $this->baseUrl . '/inscricoes';
+        $url = $this->baseUrl . '/usuarios';
 
         $curl = curl_init($url);
         curl_setopt_array($curl, [
@@ -37,7 +36,7 @@ class PostApiInscricoes
         if (curl_errno($curl)) {
             $error = curl_error($curl);
             curl_close($curl);
-            return ['mensagem' => 'Erro cURL: ' . $error];
+            return [];
         }
 
         curl_close($curl);
