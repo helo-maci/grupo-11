@@ -1,9 +1,9 @@
 import {Router} from 'express'
 
-import inscricoes from './inscricoes'
+import usuarios from './usuarios'
 
 const router = Router()
 
-router.use('/inscricoes', inscricoes)
+router.use('/usuarios', usuarios)
 
 export default router
