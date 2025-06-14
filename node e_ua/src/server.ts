@@ -28,6 +28,7 @@ app.use((
       field: issue.path.join('.'),
       message: issue.message,
     }));
+    console.log(error)
       res.status(400).json({
       status: "erro",
       message: "Validação falhou",

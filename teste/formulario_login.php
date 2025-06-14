@@ -2,31 +2,22 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Formulário de Cadastro</title>
+    <title>Formulário de Login</title>
     <script src="js/script.js" defer ></script>
 </head>
 <body>
-    <h1>Cadastro</h1>
+    <h1>Login</h1>
 
     <?php 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         require_once 'classes/PostApiUsers.php';
-        $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $cpf = $_POST['cpf'];
         $senha = $_POST['senha'];
 
         $api = new PostApiUsers();
-        $response = $api->cadastrar($nome, $email, $cpf, $senha);
+        $response = $api->logar($email, $senha);
 
-        if (isset($response['errors'])) {
-            $errors = $response['errors'];
-        }
-        if(!$errors){
-            header("location:formulario_login.php");
-            exit; 
-        }
     }
     ?>
     <?php if (!empty($errors)): ?>
@@ -40,16 +31,9 @@
     <?php endif; ?>
 
     <form method="POST">
-        <label for="nome">Nome:</label><br>
-        <input type="text" name="nome" value="<?= $_POST['nome'] ?? '' ?>" required>
-        <br><br>
 
         <label for="email">Email:</label><br>
         <input type="email" name="email" value="<?= $_POST['email'] ?? '' ?>" required>
-        <br><br>
-
-        <label for="cpf">CPF:</label><br>
-        <input type="text" name="cpf" value="<?= $_POST['cpf'] ?? '' ?>" required>
         <br><br>
 
         <label for="senha">Senha:</label><br>

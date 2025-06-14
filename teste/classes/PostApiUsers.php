@@ -8,12 +8,19 @@ class PostApiUsers
     {
         $this->baseUrl = 'http://localhost:3001';
     }
-
-    public function cadastrar($nome, $email, $senha)
-    {
+  public function logar($email, $senha)
+    {   
+        $data = [
+            'email' => $email,
+            'senha' => $senha
+        ];
+    }
+    public function cadastrar($nome, $email, $cpf, $senha)
+    {   
         $data = [
             'nome' => $nome,
             'email' => $email,
+            'cpf' => $cpf,
             'senha' => $senha
         ];
 
