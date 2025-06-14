@@ -15,6 +15,7 @@ router.post("/", async (req, res) => {
   const registerBodySchema = z.object({
     nome: z.string().min(3, { message: "Nome precisa ter pelo menos 3 caracteres" }),
     email: z.string().email({ message: "Email inválido" }),
+    cpf: z.string().min(11, {message: "Cpf Inválido"}),
     senha: z.string().min(6, { message: "Senha precisa ter pelo menos 6 caracteres" })
   })
 
