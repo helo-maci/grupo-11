@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 session_start();
 require_once 'classes/CursoEvento.php';
 
@@ -23,7 +24,14 @@ function formatarDataHora($data, $hora) {
     <title><?= htmlspecialchars($evento['titulo']) ?></title>
 </head>
 <body>
-
+    <br></br>
+<section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            
 <h1><?= htmlspecialchars($evento['titulo']) ?></h1>
 
 <p><strong>Descrição:</strong> <?= nl2br(htmlspecialchars($evento['descricao'])) ?></p>
@@ -33,15 +41,30 @@ function formatarDataHora($data, $hora) {
 
 <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
 
-    <form method="POST" action="inscricao.php">
+
+
+                                <form  method="POST" action="inscricao.php">
+                               <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">
+
+    <form  method="POST" action="inscricao.php">
         <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">
         <button type="submit" onclick="return confirm('Tem certeza que deseja se inscrever neste evento?')">Inscrever-se</button>
     </form>
 <?php else: ?>
-    <p><a href="formulario_login.php">Faça login para se inscrever</a></p>
+    <p> <a class="btn" href="formulario_login.php">Faça login para se inscrever</a></p>
 <?php endif; ?>
 
-<p><a href="index.php">Voltar</a></p>
+<p><a class="btn" href="index.php">Voltar</a></p>
 
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<?php include "footer.php"; ?>
 </body>
 </html>
