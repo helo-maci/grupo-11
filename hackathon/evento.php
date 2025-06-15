@@ -1,0 +1,47 @@
+<?php
+session_start();
+require_once 'classes/CursoEvento.php';
+
+$evento = new CursoEvento();
+$response = $evento->eventoSlug($_GET['slug']);
+$evento = $response['evento'];
+
+if (!$evento) {
+    echo "Evento não encontrado.";
+    exit;
+}
+
+function formatarDataHora($data, $hora) {
+    return date('d/m/Y', strtotime($data)) . ' às ' . substr($hora, 0, 5);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($evento['titulo']) ?></title>
+</head>
+<body>
+
+<h1><?= htmlspecialchars($evento['titulo']) ?></h1>
+
+<p><strong>Descrição:</strong> <?= nl2br(htmlspecialchars($evento['descricao'])) ?></p>
+<p><strong>Data e horário:</strong> <?= formatarDataHora($evento['data'], $evento['hora']) ?></p>
+<p><strong>Curso:</strong> <?= htmlspecialchars($evento['nome_curso']) ?></p>
+<p><strong>Palestrante:</strong> <?= htmlspecialchars($evento['nome_palestrante']) ?></p>
+
+<?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
+
+    <form method="POST" action="inscricao.php">
+        <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">
+        <button type="submit" onclick="return confirm('Tem certeza que deseja se inscrever neste evento?')">Inscrever-se</button>
+    </form>
+<?php else: ?>
+    <p><a href="formulario_login.php">Faça login para se inscrever</a></p>
+<?php endif; ?>
+
+<p><a href="index.php">Voltar</a></p>
+
+</body>
+</html>
