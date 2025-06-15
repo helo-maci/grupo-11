@@ -1,9 +1,16 @@
-import {Router} from 'express'
+import { Router } from 'express';
+import usuarios from './usuarios';
+import cursos from './cursos';
+import eventos from './eventos';
+import inscricoes from './inscricoes';
+import veriUsuarios from './veriUsuarios'
 
-import usuarios from './usuarios'
+const router = Router();
 
-const router = Router()
+router.use('/usuarios', usuarios);
+router.use('/cursos', cursos);
+router.use('/eventos', eventos);
+router.use('/inscricoes', inscricoes);
+router.use('/veriUsuarios', veriUsuarios)
 
-router.use('/usuarios', usuarios)
-
-export default router
+export default router;
