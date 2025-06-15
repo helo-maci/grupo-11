@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 session_start();
 require_once 'classes/Inscricao.php';
 
@@ -20,3 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('Você já se inscreveu nesse curso'); window.history.back();</script>";
     }
 }
+
+include "table/footer.php";
+?>

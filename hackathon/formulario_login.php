@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 session_start();
 require_once 'classes/Usuario.php';
 
@@ -29,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+        <section class="about-section py-5" aria-labelledby="about-heading">
+        <div class="container">
+            <h2 id="about-heading" class="text-center mb-5">Login</h2>
+</section>
+
 
     <?php if (!empty($errors)): ?>
         <ul>
@@ -39,21 +44,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         </ul>
     <?php endif; ?>
 
-    <form method="POST">
-
-        <label for="email">Email:</label><br>
-        <input type="email" name="email" value="<?= $_POST['email'] ?? '' ?>" required>
-        <br><br>
-
-        <label for="senha">Senha:</label><br>
-        <input type="password" name="senha" value="<?= $_POST['senha'] ?? ''?>" required>
-        <br><br>
-
-        <button type="submit" name="submit">Login</button>
-        <p>Não é Cadastrado? <a href="formulario_cadastro.php">Cadastre-se</a></p>
-        <a href="index.php"><p>Não quero fazer login </a></p>
-    </form>
 
 
+
+
+<section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="title-center card-title mb-4">Login</h2>
+                            
+                            <form method="post">
+                                            <div class="mb-3">
+                                            <label for="email">Email:</label>
+                                             <input class="label1"   type="email" name="email" value="<?= $_POST['email'] ?? '' ?>" required>
+                                            
+                                <div class="mb-3">
+                                    <label for="senha">Senha:</label>
+                                    <input class="label1"   type="password" name="senha" value="<?= $_POST['senha'] ?? '' ?>" required>
+                                  
+
+
+                                </div>
+                                <br></br>
+                                
+                                <div class="button grid mt-3">
+                                    <button type="submit" name="submit">Confirmar Login</button>
+                                </div>
+                                <br></br>
+
+                                <div class="btn grid mt-3"> 
+                                    <p><a href="formulario_cadastro.php">Cadastre-se</a></p>
+                                    <a href="index.php"></div>
+                                          <div class="btn grid mt-3">
+                                         <a href="index.php">Voltar para Eventos</a>
+
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+<?php include "footer.php"; ?>
 </body>
 </html>
