@@ -7,13 +7,13 @@ router.get('/', async (req, res) => {
   const { curso } = req.query;
 
   try {
-    let query = knex('eventos')
+    const query = knex('eventos')
       .select('eventos.*', 'cursos.nome as nome_curso', 'palestrantes.nome as nome_palestrante') 
       .join('cursos', 'eventos.id_curso', 'cursos.id') 
       .join('palestrantes', 'eventos.id_palestrante', 'palestrantes.id');
 
     if (curso) {
-      query = query.where('eventos.id_curso', curso);
+      query.where('eventos.id_curso', curso);
     }
 
     const eventos = await query;
