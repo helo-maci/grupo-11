@@ -5,9 +5,9 @@ require_once 'classes/CursoEvento.php';
 $api = new CursoEvento();
 
 $cursos = $api->listarCursos()['cursos'] ;
-$eventos = $api->listarEventos()['eventos'] ?? [];
+$eventos = $api->listarEventos()['eventos'];
 
-$idCursoSelecionado = $_GET['curso'] ?? null;
+$idCursoSelecionado = $_GET['curso'] ?? ''; 
 
 if ($idCursoSelecionado) {
     $eventos = array_filter($eventos, fn($evento) => $evento['id_curso'] == $idCursoSelecionado);
@@ -27,6 +27,13 @@ function limitarTexto($texto, $limite = 100) {
 </head>
 <body>
     <h1>Lista de Eventos</h1>
+
+<?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
+    <form action="logout.php" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+<?php endif; ?>
+
 
     <form method="GET">
         <label for="curso">Filtrar por curso:</label>
