@@ -1,7 +1,9 @@
     <?php 
 include "header.php";
+require_once 'classes/Usuario.php';
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-        require_once 'classes/Usuario.php';
+ 
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $cpf = $_POST['cpf'];
@@ -29,14 +31,11 @@ include "header.php";
 </head>
 <body>
 
+
     <section class="about-section py-5" aria-labelledby="about-heading">
         <div class="container">
             <h2 id="about-heading" class="text-center mb-5">CADASTRO</h2>
 </section>
-
-
-
-
 
 <section class="py-5">
         <div class="container">
@@ -44,8 +43,18 @@ include "header.php";
                 <div class="col-md-8 col-lg-6">
                     <div class="card shadow">
                         <div class="card-body">
-                            <h2 class="title-center card-title mb-4">Preencha o formulário</h2>
+                            <h2 class="title-center card-title mb-4"></h2>
                             
+                                    <?php if (!empty($errors)): ?>
+                                    <ul style="list-style: none">
+                                        <?php foreach ($errors as $error): ?>
+                                            <li style="color: red;">
+                                                <?= "{$error['message']}"; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+
                             <form method="post">
                                 <div class="ins mb-3">
                                     <label   for="nome">Nome:</label>
@@ -68,7 +77,7 @@ include "header.php";
                                 <br></br>
                                 
                                 <div class="button grid mt-3">
-                                    <button type="submit" name="submit">Confirmar Inscrição</button>
+                                    <button type="submit" name="submit">Cadastrar</button>
                                 </div>
                                 <br></br>   
 

@@ -1,13 +1,13 @@
 <?php
 
 class ApiServices {
-    protected string $baseUrl;
+    private string $baseUrl;
 
     public function __construct() {
         $this->baseUrl = 'http://localhost:3001';
     }
 
-protected function request(string $endpoint, string $method = 'GET', array $data = []) {
+private function request(string $endpoint, string $method = 'GET', array $data = []) {
     $url = $this->baseUrl . $endpoint;
 
     $curl = curl_init($url);
@@ -34,5 +34,7 @@ protected function request(string $endpoint, string $method = 'GET', array $data
 
     return json_decode($response, true);
 }
-
+    public function intermediario(string $endpoint, string $method = 'GET', array $data = []) {
+    return $this->request($endpoint, $method, $data);
+}
 }

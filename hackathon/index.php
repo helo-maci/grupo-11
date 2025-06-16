@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-session_start();
 require_once 'classes/CursoEvento.php';
 
 $api = new CursoEvento();
@@ -18,14 +17,6 @@ function limitarTexto($texto, $limite = 100) {
     return strlen($texto) > $limite ? substr($texto, 0, $limite) . '...' : $texto;
 }
 ?>
-
-
-
-<?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
-    <form  class="logout"  action="logout.php" method="POST">
-        <button type="submit">Logout</button>
-    </form>
-<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

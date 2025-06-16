@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-session_start();
 require_once 'classes/Inscricao.php';
 
 if (!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
@@ -22,5 +21,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include "table/footer.php";
+include "footer.php";
 ?>

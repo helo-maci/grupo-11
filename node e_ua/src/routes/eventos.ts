@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
   try {
     const query = knex('eventos')
-      .select('eventos.*', 'cursos.nome as nome_curso', 'palestrantes.nome as nome_palestrante') 
+      .select('eventos.*', 'cursos.nome as nome_curso', 'palestrantes.nome as nome_palestrante', 'palestrantes.minicurriculo as mc_palestrante', 'palestrantes.email as email_palestrante') 
       .join('cursos', 'eventos.id_curso', 'cursos.id') 
       .join('palestrantes', 'eventos.id_palestrante', 'palestrantes.id');
 
@@ -29,7 +29,7 @@ router.get('/:slug', async (req, res) => {
 
   try {
     const evento = await knex('eventos')
-      .select('eventos.*', 'cursos.nome as nome_curso', 'palestrantes.nome as nome_palestrante')
+      .select('eventos.*', 'cursos.nome as nome_curso', 'palestrantes.nome as nome_palestrante', 'palestrantes.minicurriculo as mc_palestrante', 'palestrantes.email as email_palestrante')
       .join('cursos', 'eventos.id_curso', 'cursos.id') 
       .join('palestrantes', 'eventos.id_palestrante', 'palestrantes.id') 
       .where('eventos.slug', slug)

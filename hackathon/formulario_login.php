@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-session_start();
 require_once 'classes/Usuario.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
@@ -36,26 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 </section>
 
 
-    <?php if (!empty($errors)): ?>
-        <ul>
-            <?php foreach ($errors as $erro): ?>
-                <li style="color: red;"><?= $erro ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-
-
-
-
-
 <section class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">
                     <div class="card shadow">
                         <div class="card-body">
-                            <h2 class="title-center card-title mb-4">Login</h2>
-                            
+                            <h2 class="title-center card-title mb-4"></h2>
+
+    <?php if (!empty($errors)): ?>
+        <ul style="list-style:none;">
+            <?php foreach ($errors as $erro): ?>
+                <li style="color: red;"><?= $erro ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
                             <form method="post">
                                             <div class="mb-3">
                                             <label for="email">Email:</label>
@@ -71,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                                 <br></br>
                                 
                                 <div class="button grid mt-3">
-                                    <button type="submit" name="submit">Confirmar Login</button>
+                                    <button type="submit" name="submit">Entrar</button>
                                 </div>
                                 <br></br>
 
