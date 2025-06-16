@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'classes/CursoEvento.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,15 +17,25 @@
             <a href="index.php" ><img class="logo" src="css/Logo.png" alt="Logo do Hackathon"></a>
             <h1 class="logo" img src="css/img/logo.png" style="color: #808080;">Hackathon</h1>
             <nav class="nav" role="navigation" aria-label="Navegação principal">
+                <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
                 <ul>
                     <li><a href="index.php" class="nav-link" aria-current="page">HOME</a></li>
-                    <li><a href="formulario_cadastro.php" class="nav-link">Inscrição</a></li>
+                    <li><a href="inscricoes_usuario.php" class="nav-link">Minhas Inscrições</a></li>
+                    <li>
+                        <form action="logout.php" method="POST">
+                            <button type="submit" class="nav-link">Sair</button>
+                        </form>
+                    </li>
                 </ul>
+                <?php else: ?>
+                <ul>
+                    <li><a href="index.php" class="nav-link" aria-current="page">HOME</a></li>
+                    <li><a href="formulario_login.php" class="nav-link">Login</a></li>
+                    <li><a href="formulario_cadastro.php" class="nav-link">Cadastre-se</a></li>
+                </ul>
+                <?php endif; ?>
             </nav>
             <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
             </button>
         </div>
     </header>

@@ -14,7 +14,7 @@ const PORT = 3001
 app.use(routes)
 
 app.use((
-  error: Error,
+  error: any,
   req: Request,
   res: Response,
   next: NextFunction
@@ -35,6 +35,12 @@ app.use((
       errors: errosFormatados
     });
     return;
+  }
+    if (error.errno === 1062) {
+     res.status(400).json({
+       errors: [{message: "Email e/ou CPF já cadastrados."}]
+    });
+    return
   }
   
 

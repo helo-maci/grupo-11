@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-session_start();
 require_once 'classes/CursoEvento.php';
 
 $evento = new CursoEvento();
@@ -38,13 +37,10 @@ function formatarDataHora($data, $hora) {
 <p><strong>Data e horário:</strong> <?= formatarDataHora($evento['data'], $evento['hora']) ?></p>
 <p><strong>Curso:</strong> <?= htmlspecialchars($evento['nome_curso']) ?></p>
 <p><strong>Palestrante:</strong> <?= htmlspecialchars($evento['nome_palestrante']) ?></p>
+<p><strong>Formação e demais informações:</strong> <?= htmlspecialchars($evento['mc_palestrante']) ?></p>
+<p><strong>Contato:</strong> <?= htmlspecialchars($evento['email_palestrante']) ?></p>
 
 <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
-
-
-
-                                <form  method="POST" action="inscricao.php">
-                               <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">
 
     <form  method="POST" action="inscricao.php">
         <input type="hidden" name="id_evento" value="<?= $evento['id'] ?>">

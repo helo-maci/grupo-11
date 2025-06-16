@@ -4,14 +4,14 @@ require_once 'ApiServices.php';
 class CursoEvento extends ApiServices {
 
     public function listarCursos() {
-        return $this->request('/cursos');
+        return $this->intermediario('/cursos');
     }
 
     public function listarEventos() {
-        return $this->request('/eventos');
+        return $this->intermediario('/eventos');
     }
 
     public function eventoSlug(string $slug) {
-        return $this->request("/eventos/$slug");
+        return $this->intermediario("/eventos/$slug");
     }
 }
