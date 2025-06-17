@@ -14,7 +14,7 @@ require_once 'classes/CursoEvento.php';
 <body>
     <header class="header" role="banner" aria-label="Cabeçalho do site">
         <div  class="container">
-            <a href="index.php" ><img class="logol" src="css/img/Logo.png" alt="Logo do Hackathon"></a>
+            <a href="index.php" ><img class="logol" src="img/Logo.png" alt="Logo do Hackathon"></a>
             <h1 class="logo" img src="css/img/logo.png" style="color:rgb(255, 255, 255);">Hackathon</h1>
             <nav class="nav" role="navigation" aria-label="Navegação principal">
                 <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
