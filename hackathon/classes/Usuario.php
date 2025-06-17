@@ -19,8 +19,3 @@ class Usuario extends ApiServices {
         ]);
     }
 }
-
-
-
-
-
