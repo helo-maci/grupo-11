@@ -24,8 +24,19 @@ function limitarTexto($texto, $limite = 100) {
     <meta charset="UTF-8">
     <title>Eventos</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
 </head>
 <body>
+<section>
+    <div class="fullscreen-container">
+        <img src="" alt="Banner Evento">
+        <div class="texto-central">EVENTOS UNIALFA</div>
+        <div class="texto-central2"><h1>Semanais e mensais </h1> </div>
+    </div>
+</section>
+
+
+
     <section class="">
         <div class="container2">
             <h2 id="about-heading" class="text-center mb-5">EVENTOS</h2>
@@ -42,23 +53,18 @@ function limitarTexto($texto, $limite = 100) {
             <?php endforeach; ?>
         </select>
     </form>
-
-
+    
 
     <div class="label1">
         <?php foreach ($eventos as $evento): ?>
             <div class="">
                 <h3><?= htmlspecialchars($evento['titulo']) ?></h3>
                 <p><?= limitarTexto($evento['descricao']) ?></p>
-
                 <a class="btn" href="evento.php?slug=<?= urlencode($evento['slug']) ?>">Ver detalhes</a>
             </div>
+            
         <?php endforeach; ?>
     </div>
-
-    <br></br>
-    <br></br>
-    <br></br>
 <?php include "footer.php"; ?>
 </body>
 </html>

@@ -14,16 +14,16 @@ require_once 'classes/CursoEvento.php';
 <body>
     <header class="header" role="banner" aria-label="Cabeçalho do site">
         <div  class="container">
-            <a href="index.php" ><img class="logo" src="css/Logo.png" alt="Logo do Hackathon"></a>
-            <h1 class="logo" img src="css/img/logo.png" style="color: #808080;">Hackathon</h1>
+            <a href="index.php" ><img class="logol" src="css/img/Logo.png" alt="Logo do Hackathon"></a>
+            <h1 class="logo" img src="css/img/logo.png" style="color:rgb(255, 255, 255);">Hackathon</h1>
             <nav class="nav" role="navigation" aria-label="Navegação principal">
                 <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
                 <ul>
                     <li><a href="index.php" class="nav-link" aria-current="page">HOME</a></li>
                     <li><a href="inscricoes_usuario.php" class="nav-link">Minhas Inscrições</a></li>
                     <li>
-                        <form action="logout.php" method="POST">
-                            <button type="submit" class="nav-link">Sair</button>
+                        <form action="logout.php" method="POST"> 
+                          <li><a href="logout.php" type="submit" class="nav-link">Sair</a> </li>
                         </form>
                     </li>
                 </ul>
@@ -39,3 +39,5 @@ require_once 'classes/CursoEvento.php';
             </button>
         </div>
     </header>
+
+

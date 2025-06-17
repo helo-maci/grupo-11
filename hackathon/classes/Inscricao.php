@@ -8,4 +8,9 @@ class Inscricao extends ApiServices {
             'id_evento' => $idEvento
         ]);
     }
+     public function listarInscricoesUsuario(int $idUsuario) {
+        $response = $this->intermediario("/inscricoes/usuario/{$idUsuario}");
+        return $response['inscricoes'] ?? []; 
+    }
+
 }
