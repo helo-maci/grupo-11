@@ -36,9 +36,20 @@ function formatarDataHora($data, $hora) {
 <p><strong>Descrição:</strong> <?= nl2br(htmlspecialchars($evento['descricao'])) ?></p>
 <p><strong>Data e horário:</strong> <?= formatarDataHora($evento['data'], $evento['hora']) ?></p>
 <p><strong>Curso:</strong> <?= htmlspecialchars($evento['nome_curso']) ?></p>
+                            <?php if (isset($evento['foto_palestrante_b64']) && !empty($evento['foto_palestrante_b64'])): ?>
+                                <div class="text-center my-3">
+                                    <img src="<?= htmlspecialchars($evento['foto_palestrante_b64']) ?>" 
+                                        alt="Foto do Palestrante: <?= htmlspecialchars($evento['nome_palestrante']) ?>" 
+                                    style="max-width: 200px; height: auto; border-radius: 8%; object-fit: cover;">
+                                </div>
+                            <?php else: ?>
+                                <p><em>Foto do palestrante não disponível.</em></p>
+                            <?php endif; ?>
 <p><strong>Palestrante:</strong> <?= htmlspecialchars($evento['nome_palestrante']) ?></p>
 <p><strong>Formação e demais informações:</strong> <?= htmlspecialchars($evento['mc_palestrante']) ?></p>
 <p><strong>Contato:</strong> <?= htmlspecialchars($evento['email_palestrante']) ?></p>
+
+
 
 <?php if (isset($_SESSION['token']) && isset($_SESSION['usuario']['id'])): ?>
 
